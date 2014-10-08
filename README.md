@@ -14,7 +14,16 @@ A botanic company "Eclo" operates multiple greenhouses across the country. They 
 In this example, we show how they read the temperature and luminosity sensor values and send command from AirVantage.
 
 
-What it does
+Before you start
+-------------------------
+Before you start, you should have :
+1. An AirVantage account (if not, apply for a free trial account here: https://signup.airvantage.net/public/avep/)
+2. Register your BeagleBone Black using its serial number as the identifier, and activate it (check out the "Developer Guide" on doc.airvantage.net for instructions)
+3. Now, connect your BeagleBone Black to your PC with the USB cable, and connect the Ethernet cable as well
+4. Launch the Cloud9 IDE on your PC, save the code, and run it
+
+
+What the code does
 ---------------------
 ###1. Download the "Bonescript" & "MQTT" Modules
 For running the operations on the Beaglebone Black (like b.AnalogRead), and "MQTT" module to perform the read and write operations with the protocol
@@ -29,9 +38,9 @@ var serialnumber = "5001BBBK7520"; //enter your BBB serial no. here. go to url: 
 var password = "1234"; //enter the password of your choice
 ```
 
-###3. Start the MQTT client & listen for a command from the AirVantage server
+###3. Write command from AirVantage to BBB
 
-Here we "subscribe" to the tasks topic. When it receives a message, print something.
+Here we use MQTT "subscribe" to listen to the command from AirVantage. When the BBB receives a message from the server, it will do whatever you want it to.
 
 ```javascript
 client.on('connect', function() { // When connected
@@ -46,22 +55,20 @@ client.on('connect', function() { // When connected
 });
 ```
  
-###4. Send command message from AirVantage to BBB
+###4. Read the sensors value from AirVantage
 
-Here we want to define 2 parameters and the associated analog input pins with the sensors connected.
+First, define the 2 variables and the associated analog input pins with the sensors connected.
 
 ```javascript
 var temperaturePin = "P9_35";
 var luminosityPin  = "P9_38";
 ```
 
-###5. Read the sensors value from AirVantage
-
-Here we want to read the sensor values on a regular basis:
-* The analog input pins will be read, and the values will be "published" every 60 seconds
-* Please note that we have declared the data names "greenhouse.temperature" and "greenhouse.luminosity" that you'll use to identify these parameters later on AirVantage
-* The try/ catch has been added, such that even there may be error when reading the input values, the code will still move on
-* We then use the MQTT "publish" function to send the read sensor values with the time stamp 
+Then, read the sensor values and send them to AirVantage on a regular basis:
+* The above actions will be performed once every 60 seconds
+* The data names "greenhouse.temperature" and "greenhouse.luminosity" will be what you'll use to identify these parameters on AirVantage
+* The try/ catch loops have been added to keep the code going, even there are error when reading the analog input pins
+* Finally it uses the MQTT "publish" function to send the read sensor values with the time stamp 
 
 ```javascript
 setInterval( function loop() {
@@ -95,4 +102,11 @@ setInterval( function loop() {
 , 60*1000);
 ```
 
-
+What's next
+----------------------
+Now that you have sent the greenhouse data to AirVantage, log into your AirVantage account and see them
+* Go to Monitor/ System
+* Click on your BeagleBone Black from the system list
+* On the detailed system page, you can use either the "Timeline" or "Data history" to review your data (check out the User Guide for help)
+* If you see the data, congratulations! You have succeeded the exercise!
+* You can now replicate the same setup in multiple locations, and use AirVantage to manage them all
