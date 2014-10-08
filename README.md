@@ -7,12 +7,19 @@ This code in javascript enables a BeagleBone Black to communicate in the MQTT pr
 User can use it to send data from sensors to the cloud server, and remotely control some local actuator by sending a command from AirVantage's web portal.
 You can modify the code to commodate any number of sensors, and apply different heartbeat frequency and action to the actuator.
 
+
+The scenario
+----------------------
+A botanic company "Eclo" operates multiple greenhouses across the country. They want to monitor the operating condition and to apply corrective action when needed.
+In this example, we show how they read the temperature and luminosity sensor values and send command from AirVantage.
+
+
 What it does
 ---------------------
-+++1. Download the "Bonescript" & "MQTT" Modules
+###1. Download the "Bonescript" & "MQTT" Modules
 For running the operations on the Beaglebone Black (like b.AnalogRead), and "MQTT" module to perform the read and write operations with the protocol
 
-+++2. Connect to AirVantage in MQTT
+###2. Connect to AirVantage in MQTT
 We have provided the code with information of my BBB and my AirVantage account. Please update the following fields below:
 
 ```javascript
@@ -22,7 +29,7 @@ var serialnumber = "5001BBBK7520"; //enter your BBB serial no. here. go to url: 
 var password = "1234"; //enter the password of your choice
 ```
 
-+++3. Start the MQTT client & listen for a command from the AirVantage server
+###3. Start the MQTT client & listen for a command from the AirVantage server
 
 Here we "subscribe" to the tasks topic. When it receives a message, print something.
 
@@ -39,22 +46,22 @@ client.on('connect', function() { // When connected
 });
 ```
  
-+++4. Send command message from AirVantage to BBB
+###4. Send command message from AirVantage to BBB
 
-Here we say, we want to define 2 parameters, and we will connect the associated sensors to the pin 35 and 38 on the Header P9.
+Here we want to define 2 parameters and the associated analog input pins with the sensors connected.
 
 ```javascript
 var temperaturePin = "P9_35";
 var luminosityPin  = "P9_38";
 ```
 
-+++4. Read the sensors value from AirVantage
+###5. Read the sensors value from AirVantage
 
-We want to read the sensor value in this session:
-..* Every 60 seconds (you can update the frequency as you like, see the end of this section)
-..* Define the data names "greenhouse.temperature" and "greenhouse.luminosity" that you'll use to identify the data with you AirVantage application model
-..* A try loop has been integrated, such that if there is any error when reading the analog inputs, the code will still move on
-..* We then use the MQTT "publish" function to send the timestamp and the sensor values to AirVantage
+Here we want to read the sensor values on a regular basis:
+* The analog input pins will be read, and the values will be "published" every 60 seconds
+* Please note that we have declared the data names "greenhouse.temperature" and "greenhouse.luminosity" that you'll use to identify these parameters later on AirVantage
+* The try/ catch has been added, such that even there may be error when reading the input values, the code will still move on
+* We then use the MQTT "publish" function to send the read sensor values with the time stamp 
 
 ```javascript
 setInterval( function loop() {
