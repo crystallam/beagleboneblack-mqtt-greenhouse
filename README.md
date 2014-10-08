@@ -3,9 +3,8 @@ beagleboneblack-mqtt-greenhouse
 
 The BeagleBone Black Greenhouse
 ----------------------------------------
-This code in javascript enables a BeagleBone Black to communicate in the MQTT protocol with Sierra Wireless' AirVantage M2M Cloud.
-User can use it to send data from sensors to the cloud server, and remotely control some local actuator by sending a command from AirVantage's web portal.
-You can modify the code to commodate any number of sensors, and apply different heartbeat frequency and action to the actuator.
+This code in javascript enables a BeagleBone Black to use the MQTT protocol to communicate with Sierra Wireless' AirVantage M2M Cloud.
+You can use it to send data from sensors to the cloud server, remotely control an actuator by sending from the web portal.
 
 
 The scenario
@@ -17,10 +16,10 @@ In this example, we show how they read the temperature and luminosity sensor val
 Before you start
 -------------------------
 Before you start, you should have :
-1. An AirVantage account (if not, apply for a free trial account here: https://signup.airvantage.net/public/avep/)
-2. Register your BeagleBone Black using its serial number as the identifier, and activate it (check out the "Developer Guide" on doc.airvantage.net for instructions)
-3. Now, connect your BeagleBone Black to your PC with the USB cable, and connect the Ethernet cable as well
-4. Launch the Cloud9 IDE on your PC, save the code, and run it
+* An AirVantage account (if not, apply for a free trial account here: https://signup.airvantage.net/public/avep/)
+* Register your BeagleBone Black using its serial number as the identifier, and activate it (check out the "Developer Guide" on doc.airvantage.net for instructions)
+* Now, connect your BeagleBone Black to your PC with the USB cable, and connect the Ethernet cable as well
+* Launch the Cloud9 IDE on your PC, save the code, and run it
 
 
 What the code does
@@ -109,4 +108,5 @@ Now that you have sent the greenhouse data to AirVantage, log into your AirVanta
 * Click on your BeagleBone Black from the system list
 * On the detailed system page, you can use either the "Timeline" or "Data history" to review your data (check out the User Guide for help)
 * If you see the data, congratulations! You have succeeded the exercise!
-* You can now replicate the same setup in multiple locations, and use AirVantage to manage them all
+
+You can now replicate the same setup in multiple locations, and use AirVantage to manage them all
