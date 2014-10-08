@@ -3,7 +3,7 @@ var mqtt = require('mqtt');
 
 // Configuration to adapt
 var port = 1883;
-var server = "edge.airvantage.net";
+var server = "na.airvantage.net";
 var serialnumber = "5001BBBK7520"; // Serialnumber of my BBB
 var password = "1234";
 
