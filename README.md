@@ -32,7 +32,7 @@ We have provided the code with information of my BBB and my AirVantage account. 
 
 ```javascript
 var port = 1883; //no change to the port
-var server = "edge.airvantage.net"; //enter your AirVantage server URL, it should be either "na.airvantage.net" or "eu.airvantage.net"
+var server = "na.airvantage.net"; //this is your AirVantage server URL
 var serialnumber = "5001BBBK7520"; //enter your BBB serial no. here. go to url: http://192.168.7.2/Support/BoneScript/getPlatform/, run it, and note down the serial no.
 var password = "1234"; //enter the password of your choice
 ```
