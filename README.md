@@ -15,7 +15,7 @@ In this example, we show how they monitor 1 greenhouse by reading the temperatur
 Ready to start?
 ----------------------
 1. Have you got an AirVantage account? if not, sign up for a free trial: [here](https://signup.airvantage.net/public/avep/)  
-2. Get detailed instructions on how to send/receive data from your BeagleBone Black to AirVantage using MQTT : [here](https://doc.airvantage.net/display/USERGUIDE/Using+MQTT+with+AirVantage) 
+2. Get detailed instructions on how to send/receive data from your BeagleBone Black to AirVantage using MQTT : [here](https://doc.airvantage.net/av/reference/hardware/protocols/mqtt/) 
 
 
 What the code does
@@ -100,7 +100,7 @@ setInterval( function loop() {
 
 Test it
 ----------------------
-Here's a tutorial on how to test your application on AirVantage: [here](https://doc.airvantage.net/display/USERGUIDE/Test+your+solution)
+Here's a tutorial on how to test your application on AirVantage: [here](https://doc.airvantage.net/av/howto/hardware/test/)
 
 
 What's next
